@@ -16,12 +16,14 @@ start_service() {
 	init_switch
 
 	procd_open_instance
-	procd_set_param command /sbin/netifd -d 15
+	procd_set_param command /sbin/netifd -d 15 -l 100
 	procd_set_param respawn
 	procd_set_param watch network.interface
 	[ -e /proc/sys/kernel/core_pattern ] && {
 		procd_set_param limits core="unlimited"
 	}
+	procd_set_param stdout 1
+        procd_set_param stderr 1
 	procd_close_instance
 }
 
