@@ -12,6 +12,8 @@ include $(INCLUDE_DIR)/package.mk
 #include $(INCLUDE_DIR)/cmake.mk
 
 ## KernelPackage
+## KCONFIG variable effects if this kernel module will be placed into rootfs \
+   automatically when build root do compiling firmware.
 define KernelPackage/kernel-memleak
   SUBMENU:=Other modules
   TITLE:=irene kernel packages
