@@ -8,6 +8,10 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 include $(INCLUDE_DIR)/package.mk
 
+TARGET_CFLAGS += -ggdb3
+
+TARGET_LDFLAGS +=
+
 ## Package
 define Package/irene
   SECTION:=net
@@ -33,7 +37,7 @@ endef
 
 define Build/Compile
 	@echo "irene compile"
-	$(TARGET_CC) $(TARGET_CFLAGS) $(PKG_BUILD_DIR)/*.c -o $(PKG_BUILD_DIR)/$(PKG_NAME) -I$(PKG_BUILD_DIR)/include/
+	$(TARGET_CC) $(TARGET_CFLAGS) $(TARGET_LDFLAGS) $(PKG_BUILD_DIR)/*.c -o $(PKG_BUILD_DIR)/$(PKG_NAME) -I$(PKG_BUILD_DIR)/include/
 endef
 
 $(eval $(call BuildPackage,irene))
