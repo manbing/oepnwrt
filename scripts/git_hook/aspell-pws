@@ -192,3 +192,4 @@ bpf
 kprobe
 jprobe
 ASLR
+config_generate
